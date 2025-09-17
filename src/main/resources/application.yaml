@@ -8,3 +8,14 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+        exclude:
+          - beans
+          - threaddump
+#      base-path: /my-measures
+#  server:
+#    port: 9000
