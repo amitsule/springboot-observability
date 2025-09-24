@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 public class CustomActuator
 {
     @ReadOperation
-    public String myCustomActuator()
+    public Message myCustomActuator()
     {
-        return "{\"status\": \"Custom actuator endpoint\"}";
+        return new Message("OK","Custom actuator endpoint");
     }
+
+    record Message(String status, String message) {}
 }

@@ -4,7 +4,22 @@ spring:
 management:
   endpoint:
     health:
+#      show-components: always        # basic information of components
       show-details: always
+      status:
+        order: CRITICAL, DOWN, OUT_OF_SERVICE, UP, UNKNOWN
+        http-mapping:
+          down: 500
+          out-of-service: 503
+          critical: 500
+      group:
+        external-services:
+          include:
+            - anotherService
+    #    shutdown:
+#      access: unrestricted
+    cache:
+      access: none                  # can disable using access: none
   tracing:
     sampling:
       probability: 1.0
@@ -19,3 +34,23 @@ management:
 #      base-path: /my-measures
 #  server:
 #    port: 9000
+  metrics:
+    tags:
+      team: ${TEAM_NAME:backend}
+      region: ${REGION_NAME:uk}
+    distribution:
+      percentiles-histogram:
+        do.greeting.timed.aspect: true
+      minimum-expected-value:
+        do.greeting.timed.aspect: 100ms
+      maximum-expected-value:
+        do.greeting.timed.aspect: 1s
+      percentiles:
+        http.server.requests: 0.99, 0.95, 0.90, 0.75, 0.5
+      slo:
+        do.greeting.timed.aspect: 300ms, 500ms, 1s
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true

@@ -1,0 +1,46 @@
+#### Login
+#POST http://localhost:8080/login
+#Content-Type: application/json
+#
+#{
+#  "user": "someuser",
+#  "password": "somePassword"
+#}
+#
+#> {%
+#    client.global.set("auth_token", response.headers.valuesOf('x-auth-token')[0]);
+#%}
+#
+####
+#GET http://localhost:8080/greeting/TEST1
+#Authorization: Bearer {{auth_token}}
+
+###
+GET http://localhost:8080/greeting/TEST1
+
+###
+GET http://localhost:8080/greeting/TEST2
+
+###
+GET http://localhost:8080/greeting/TEST3
+
+###
+GET http://localhost:8080/greeting/TEST4
+
+###
+GET http://localhost:8080/greeting/TEST5
+
+###
+GET http://localhost:8080/greeting/TEST6
+
+###
+GET http://localhost:8080/greeting/TEST7
+
+###
+GET http://localhost:8080/greeting/TEST8
+
+###
+GET http://localhost:8080/greeting/TEST9
+
+###
+GET http://localhost:8080/greeting/TEST10
